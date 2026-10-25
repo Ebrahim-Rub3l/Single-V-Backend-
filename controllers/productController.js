@@ -1,7 +1,19 @@
 const Product = require ('../models/productSchema')
 
 const CreateProductController = async (req, res) => {
+
     try {
+        console.log(req.files)
+
+        const files = req.files || [];
+        const isMain = Number(req.body.isMain ?? 0);
+
+        // Uploaded images থেকে array তৈরি
+        const image = files.map((item, index) => ({
+            url: item.path,
+            isMain: index === isMain
+        }));
+
         const {
             tittle,
             description,
@@ -9,7 +21,8 @@ const CreateProductController = async (req, res) => {
             discountPrice,
             category,
             stock,
-            tags
+            tags,
+            images
         } = req.body;
 
         if (!tittle || !price) {

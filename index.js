@@ -58,7 +58,7 @@ app.get('/get/allCategory',getallCategoryController);
 
 //CreateProduct
 
-app.post('/createproduct', upload.array('images',5), CreateProductController);
+app.post('/createproduct', upload.array('photos',5), CreateProductController);
 app.get('/getproductbyid',getProductByIdController);
 app.get('/getAllProduct',getAllProductController);
 app.get('/Editproduct',getProductUpdateController);
